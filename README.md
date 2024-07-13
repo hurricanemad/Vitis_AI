@@ -11,36 +11,43 @@
 
 ##**Example**:You can use below code to quantizing a RDN model:
 
-'sudo su'
+**sudo su**
 
-'cd **repository Path**'
+**cd repository Path**
 
 You can initialize the docker environment of pytorch cpu using below code,
 the operations are likely to take a few minutes:
-'./docker_run.sh xilinx/vitis-ai-pytorch-cpu:latest'
 
-'cd /workspace/examples/vai_quantizer/pytorch/RDN'
+**./docker_run.sh xilinx/vitis-ai-pytorch-cpu:latest**
+
+**cd /workspace/examples/vai_quantizer/pytorch/RDN**
 
 if you would like to know the PSNR and SSIM of the intialized float model using below code,
 I had trained a model using the [Kvasir subset](https://paperswithcode.com/dataset/kvasir) :
-'python RDN_quant.py --quant_mode float --data_dir /workspace/medicaltempx2df --model_dir model --batch_size 1'
+
+**python RDN_quant.py --quant_mode float --data_dir /workspace/medicaltempx2df --model_dir model --batch_size 1**
 
 You can use below code to be aware of whether the model is suitable the goal architecture KR260:
-'python RDN_quant.py --quant_mode float --inspect --target DPUCZDX8G_ISA1_B4096 --model_dir model --batch_size 1'
+
+**python RDN_quant.py --quant_mode float --inspect --target DPUCZDX8G_ISA1_B4096 --model_dir model --batch_size 1**
 
 After comfirming the model can delpy in the KR260, you can use below code to start the quantization of the float model,
 these operations would take hours, because we choose the cpu mode to quantize the model:
-'python RDN_quant.py --quant_mode calib --data_dir /workspace/MedicalImagePatch1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model/  --subset_len 200 --batch_size 2'
+
+**python RDN_quant.py --quant_mode calib --data_dir /workspace/MedicalImagePatch1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model/  --subset_len 200 --batch_size 2**
 
 You can evaluate the PSNR and SSIM of the quantized mode using the below code,
 You can review the differences between the PSNR and SSIM befor and after model quantizing:
-'python RDN_quant.py --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model/ --data_dir /workspace/medicaltempx2df --quant_mode test --batch_size 1'
+
+**python RDN_quant.py --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model/ --data_dir /workspace/medicaltempx2df --quant_mode test --batch_size 1**
 
 You can generate the .xmodel file to run in the KR260 kit using the below code:
-'python DN_quant.py--quant_mode test --subset_len 1 --batch_size=1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model --data_dir /workspace/medicalx2df --deploy'
+
+**python DN_quant.py--quant_mode test --subset_len 1 --batch_size=1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model --data_dir /workspace/medicalx2df --deploy**
 
 Finaly, you can use below code to convert the quantized model to the goal architecture:
-'vai_c_xir -x /workspace/examples/vai_quantizer/pytorch/RDN/quantize_result/RDN_int.xmodel -a /opt/vitis_ai/compiler/arch/DPUCZDX8G/KV260/arch.json -o RDN_pt -n RDN_pt'
+
+**vai_c_xir -x /workspace/examples/vai_quantizer/pytorch/RDN/quantize_result/RDN_int.xmodel -a /opt/vitis_ai/compiler/arch/DPUCZDX8G/KV260/arch.json -o RDN_pt -n RDN_pt**
 
 Then you can find the quantized model in the /workspace/examples/vai_quantizer/pytorch/RDN/RDN_pt path.
 
