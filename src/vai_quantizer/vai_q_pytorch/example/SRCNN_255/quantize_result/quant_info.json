@@ -1,0 +1,26 @@
+{
+  "param":
+  {
+    "SRCNN::conv1.weight":[[8,5]],
+    "SRCNN::conv1.bias":[[8,2]],
+    "SRCNN::conv2.weight":[[8,8]],
+    "SRCNN::conv2.bias":[[8,7]],
+    "SRCNN::conv3.weight":[[8,7]],
+    "SRCNN::conv3.bias":[[8,12]]
+  },
+  "output":
+  {
+    "SRCNN::nndct_input_0":[[8,-2]],
+    "SRCNN::nndct_relu_2":[[8,-3]],
+    "SRCNN::nndct_relu_4":[[8,-2]],
+    "SRCNN::nndct_conv2d_5":[[8,-2]]
+  },
+  "input":
+  {
+
+  },
+  "fast_finetuned":false,
+  "bias_corrected":true,
+  "version":"3.5.0+60df3f1+torch1.13.1",
+  "graph_md5":"6522a1fe38db6bff452dd9c91de33081"
+}
