@@ -1,15 +1,21 @@
 # Vitis_AI
-#**Introduction:This is a modified Vitis-AI cloned from Xilinx repository(https://github.com/Xilinx/Vitis-AI). These codes run in a docker environment created by Xilinx. You can browse the [quick start guide](https://xilinx.github.io/Vitis-AI/3.0/html/docs/quickstart/mpsoc.html) of Vitis-AI for Zynq UltraScale+ to learn about the methods to intialize the docker environment. The program provide the quantizing code of the model of two super resolution algorithm, which are [RDN](Residual Dense Network for Image Super-Resolution)  and [SRCNN](Super-Resolution Convolutional Neural Network). The quantized model can finally run in Kria KR260 Robotic kit.**
+## Introduction:
 
-#Author: Hui Shen(Doxxxx)
+**This is a modified Vitis-AI cloned from Xilinx repository(https://github.com/Xilinx/Vitis-AI). These codes run in a docker environment created by Xilinx. You can browse the [quick start guide](https://xilinx.github.io/Vitis-AI/3.0/html/docs/quickstart/mpsoc.html) of Vitis-AI for Zynq UltraScale+ to learn about the methods to intialize the docker environment. The program provide the quantizing code of the model of two super resolution algorithm, which are [RDN](Residual Dense Network for Image Super-Resolution)  and [SRCNN](Super-Resolution Convolutional Neural Network). The quantized model can finally run in Kria KR260 Robotic kit.**
 
-#Date: May, 2024
+## Author: Hui Shen(Doxxxx)
 
-#**Quick Start:**
+## Date: May, 2024
 
-##Premise: You should train a float model of the [RDN](https://github.com/yjn870/RDN-pytorch) or [SRCNN](https://github.com/yjn870/SRCNN-pytorch) network using the goal image dataset.
+## Quick Start:
 
-##**Example**:You can use below code to quantizing a RDN model:
+### Premise: 
+
+You should train a float model of the [RDN](https://github.com/yjn870/RDN-pytorch) or [SRCNN](https://github.com/yjn870/SRCNN-pytorch) network using the goal image dataset.
+
+### Example:
+
+**You can use below code to quantizing a RDN model:**
 
 **sudo su**
 
@@ -54,12 +60,4 @@ Then you can find the quantized model in the /workspace/examples/vai_quantizer/p
 After the quantization, you can transmit the model to the KR260 kit using the scp command and using the [Kria-RoboticsAI](https://github.com/amd/Kria-RoboticsAI?tab=readme-ov-file) to execute the super-resolution operations.
 
 If you want to try to quantizing the SRCNN model, you can change the above commands and model path to **SRCNN_quant.py** and **SRCNN/model**, respectively.
-
-
-
-
-
- 
-
-
 
