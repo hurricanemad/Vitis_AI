@@ -43,7 +43,7 @@ You can review the differences between the PSNR and SSIM befor and after model q
 
 You can generate the .xmodel file to run in the KR260 kit using the below code:
 
-**python DN_quant.py--quant_mode test --subset_len 1 --batch_size=1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model --data_dir /workspace/medicalx2df --deploy**
+**python RDN_quant.py--quant_mode test --subset_len 1 --batch_size=1 --model_dir /workspace/examples/vai_quantizer/pytorch/RDN/model --data_dir /workspace/medicalx2df --deploy**
 
 Finaly, you can use below code to convert the quantized model to the goal architecture:
 
@@ -52,6 +52,8 @@ Finaly, you can use below code to convert the quantized model to the goal archit
 Then you can find the quantized model in the /workspace/examples/vai_quantizer/pytorch/RDN/RDN_pt path.
 
 After the quantization, you can transmit the model to the KR260 kit using the scp command and using the [Kria-RoboticsAI](https://github.com/amd/Kria-RoboticsAI?tab=readme-ov-file) to execute the super-resolution operations.
+
+If you want to try to quantizing the SRCNN model, you can change the above commands and model path to **SRCNN_quant.py** and **SRCNN/model**, respectively.
 
 
 
